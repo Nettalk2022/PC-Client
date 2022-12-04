@@ -299,7 +299,7 @@ public class Client_3{
                 BufferedWriter out = new BufferedWriter(fw);
                 String data="";
                 while(true){
-                    data=chatTextPane.getText(); //지금까지 채팅창(ta)에 올라온내용 파일에 저장
+                    data=chatTextPane.getText(); //지금까지 채팅창(chatTextPane)에 올라온내용 파일에 저장
                     if(data==null) break;
 
                     out.write(data);
@@ -334,14 +334,14 @@ public class Client_3{
             }
         }//버튼 액션 지정
 
-        public void sendprocess(String string){//텍스트 필드 값을 전송하는 메서드
+        public void sendprocess(String string){//채팅 전송하는 메서드
             try{
                 String str2=string;
                 if(chatMode.equals("all")){//전체말이 체크되어있는 경우
                     pw.println("/a"+str2);
                     System.out.println("보냄 : "+ str2+"\n");
                 }
-                else if(chatMode.equals("whisper")&& (whisperto != null)){//귓속말이 체크된경우
+                else if(chatMode.equals("whisper")&& (whisperto != null)){//귓속말이 체크된 경우
                     try{
                         String name=whisperto;
                         pw.println(("/s"+name+"-"+str2));//name은 받을 사람의 이름
@@ -410,7 +410,7 @@ public class Client_3{
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             img = icon.getImage();
-            g.drawImage(img,0,0, 100,100,this);//좌측상단
+            g.drawImage(img,0,0, 100,100,this);
         }
 
     }
@@ -435,7 +435,7 @@ public class Client_3{
 
     private void setUserList() {
         userListModel.clear();
-        for (count=1;count<list.size();count++) {//0번째 인덱스는 무조건 본인부터 들어가있기때문에 1부터반영
+        for (count=1;count<list.size();count++) {//0번째 인덱스는 무조건 본인이기 때문에 1부터 반영
             userListModel.addElement((String) list.get(count));
         }
     }
@@ -485,7 +485,7 @@ class ClientThread extends Thread{
     public void run() {
         try{
             br= new BufferedReader(new InputStreamReader(sc.getInputStream()));//서버에서 넘어온값 받기
-            while(true){//종료조건이 없나?
+            while(true){
                 str=br.readLine();
                 System.out.println(str);
                 if(str.indexOf("/f")==0){
