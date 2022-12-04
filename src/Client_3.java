@@ -261,14 +261,6 @@ public class Client_3{
             f2.add(rb1);
             f2.add(rb2);
 
-
-            //목록(종료버튼 윗부분까지)
-
-            //p3[p5[btnend]]
-            //여기까지 왼쪽 리스트 목록
-
-            //f2[pan]
-
             mfile.add(mfile_save);
             mfile.addSeparator(); mfile.add(mfile_exit);
             //메뉴에 아이템삽입
